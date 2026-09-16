@@ -1,0 +1,147 @@
+
+* {
+
+    box-sizing: border-box;
+
+}
+
+body {
+
+    margin: 0;
+
+    min-height: 100vh;
+
+    background: #080808;
+
+    color: white;
+
+    font-family: Arial, sans-serif;
+
+}
+
+header {
+
+    padding: 20px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+nav a {
+
+    color: white;
+
+    text-decoration: none;
+
+    margin: 10px;
+
+}
+
+.hero {
+
+    min-height: 70vh;
+
+    display: grid;
+
+    place-items: center;
+
+    text-align: center;
+
+    padding: 30px;
+
+}
+
+.hero h1 {
+
+    font-size: clamp(2.5rem, 8vw, 6rem);
+
+}
+
+button {
+
+    padding: 14px 30px;
+
+    border: none;
+
+    border-radius: 30px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+}
+
+section {
+
+    padding: 60px 10%;
+
+}
+
+.portfolio {
+
+    text-align: center;
+
+    padding: 60px 10%;
+
+}
+
+.avatar {
+
+    width: 100px;
+
+    height: 100px;
+
+    margin: auto;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: #222;
+
+}
+
+.projects,
+
+.features {
+
+    display: grid;
+
+    grid-template-columns:
+
+    repeat(auto-fit, minmax(200px, 1fr));
+
+    gap: 20px;
+
+}
+
+.projects div,
+
+.features div {
+
+    padding: 30px;
+
+    background: #151515;
+
+    border-radius: 15px;
+
+}
+
+@media(max-width:700px) {
+
+    header {
+
+        flex-direction: column;
+
+        gap: 15px;
+
+    }
+
+}
+
