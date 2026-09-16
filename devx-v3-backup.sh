@@ -14,62 +14,6 @@ WHITE='\033[1;37m'
 RESET='\033[0m'
 
 BASE="$HOME/dev-x"
-update_devx() {
-
-    banner
-
-    echo -e "${CYAN}DEV-X UPDATER${RESET}"
-    echo
-    echo "Checking GitHub for updates..."
-    echo
-
-    cd "$BASE" || return
-
-    if ! git remote get-url origin >/dev/null 2>&1; then
-        echo -e "${RED}GitHub remote is not configured.${RESET}"
-        pause
-        return
-    fi
-
-    git fetch origin main
-
-    LOCAL=$(git rev-parse HEAD)
-    REMOTE=$(git rev-parse origin/main)
-
-    if [ "$LOCAL" = "$REMOTE" ]; then
-
-        echo -e "${GREEN}✓ DEV-X is already up to date.${RESET}"
-
-    else
-
-        echo
-        echo -e "${YELLOW}A new version is available.${RESET}"
-        echo
-
-        read -p "Update DEV-X now? (y/n): " answer
-
-        if [[ "$answer" =~ ^[Yy]$ ]]; then
-
-            git pull --ff-only origin main
-
-            if [ $? -eq 0 ]; then
-                echo
-                echo -e "${GREEN}✓ DEV-X updated successfully!${RESET}"
-            else
-                echo
-                echo -e "${RED}Update failed. Your files were not overwritten.${RESET}"
-            fi
-
-        else
-
-            echo "Update cancelled."
-
-        fi
-
-    fi
-
-    pause
-}
 
 pause() {
     echo
@@ -1132,13 +1076,9 @@ while true; do
     echo -e "${WHITE}7.${RESET} 🧮 Calculator"
     echo -e "${WHITE}8.${RESET} 🔧 Git Tools"
     echo -e "${WHITE}9.${RESET} 📂 File Manager"
-    echo -e "${WHITE}10.${RESET} 🔄 Update DEV-X"
-echo -e "${WHITE}11.${RESET} 🧠 AI Coding Assistant"
     echo -e "${WHITE}0.${RESET} ❌ Exit"
+
     echo
-if [ -f "$BASE/plugins/ai.sh" ]; then
-    source "$BASE/plugins/ai.sh"
-fi
 
     read -p "Select an option: " choice
 
@@ -1183,14 +1123,8 @@ fi
         9)
             file_manager
             ;;
-        10)
-            update_devx
-            ;;  
-    
-11)
-    ai_assistant
-    ;;
-  0)
+
+        0)
             clear
             echo -e "${CYAN}DEV-X closed. Keep building! 🚀${RESET}"
             exit

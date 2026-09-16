@@ -1133,12 +1133,8 @@ while true; do
     echo -e "${WHITE}8.${RESET} 🔧 Git Tools"
     echo -e "${WHITE}9.${RESET} 📂 File Manager"
     echo -e "${WHITE}10.${RESET} 🔄 Update DEV-X"
-echo -e "${WHITE}11.${RESET} 🧠 AI Coding Assistant"
     echo -e "${WHITE}0.${RESET} ❌ Exit"
     echo
-if [ -f "$BASE/plugins/ai.sh" ]; then
-    source "$BASE/plugins/ai.sh"
-fi
 
     read -p "Select an option: " choice
 
@@ -1185,12 +1181,8 @@ fi
             ;;
         10)
             update_devx
-            ;;  
-    
-11)
-    ai_assistant
-    ;;
-  0)
+            ;;
+        0)
             clear
             echo -e "${CYAN}DEV-X closed. Keep building! 🚀${RESET}"
             exit
